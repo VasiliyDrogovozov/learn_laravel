@@ -9,9 +9,7 @@ class PostController extends Controller
 {
     public function index() {
       $posts = Post::all();
-
-      dump($posts);
-      dd('end');
+      return view('posts', compact('posts'));
     }
 
     public function create() {
