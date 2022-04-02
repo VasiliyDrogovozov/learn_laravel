@@ -1,6 +1,7 @@
 <?php
 use App\Models\Page;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MyPlaceController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,25 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/contacts', function () {
-    return view('contacts');
-});
-
-Route::get('/', function () {
-    return view('index');
-});
-
-Route::get('/story', function () {
-    return view('story');
-});
-
-Route::get('/about', function () {
-    return view('about');
-});
 
 
-Route::get('/services', function () {
-    return view('services');
-});
-
-
+Route::get('/', [MyPlaceController::class, 'index']);

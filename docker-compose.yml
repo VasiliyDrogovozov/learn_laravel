@@ -7,7 +7,7 @@ volumes:
 
 services:
   frontend:
-    container_name: 0203-frontend
+    container_name: frontendLearn
     build:
       context: .
       dockerfile: .deploy/docker/frontend/Dockerfile
@@ -17,10 +17,10 @@ services:
     depends_on:
       - backend
     ports:
-      - 8081:80
+      - 8015:80
 
   backend:
-    container_name: 0203-backend
+    container_name: backendLearn
     build:
       context: .
       dockerfile: .deploy/docker/backend/Dockerfile
@@ -31,12 +31,11 @@ services:
 
 
   db:
-    container_name: 02-03-db
+    container_name: dbLearn
     image: postgres
     restart: always
     environment:
       POSTGRES_PASSWORD: root
-      POSTGRES_DB: app
-    volumes: 
+      POSTGRES_DB: learn
+    volumes:
       - db-data:/var/lib/postgresql/data
-
