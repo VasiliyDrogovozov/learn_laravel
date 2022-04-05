@@ -15,6 +15,12 @@ use App\Http\Controllers\PostController;
 
 
 
+Route::get('/', function() {
+  return '<h1>Hello friend!</h1>';
+});
+
+
+
 Route::get('/posts', [PostController::class, 'index'])->name('post.index');
 Route::get('/posts/create', [PostController::class, 'create'])->name('post.create');
 

@@ -5,9 +5,19 @@
 @section('content')
     <h1>Posts</h1>
     <a class="btn btn-primary " href="{{ route('post.create') }}">Add post</a>
-    @foreach($posts as $post)
-      <p><a href="{{ route('post.show', $post->id)}}">{{ $post->id }}.{{ $post->title }}</a></p>
-      <p>{{ $post->content }}</p>
-    @endforeach
-
+    <div class="mt-2">
+      @foreach($posts as $post)
+      <div class="border border-dark mt-2 p-3">
+        <p><a href="{{ route('post.show', $post->id)}}">{{ $post->id }}.{{ $post->title }}</a></p>
+        <p>Content: {{ $post->content }}</p>
+        <p>Category: {{ $post->category->title }}</p>
+        <p>
+          Tags:
+          @foreach($post->tags as $tag)
+            {{ $tag->title }},
+          @endforeach
+        </p>
+      </div>
+      @endforeach
+    </div>
 @endsection
