@@ -23,6 +23,32 @@
     <input type="text" class="form-control" value="{{ $post->image }}" name="image" id="image" placeholder="Image">
   </div>
 
+  <div class="mb-3">
+    <label class="form-label" for="category">Category</label>
+    <select class="form-select" aria-label="Default select example" id="category" name="category_id">
+      @foreach($categories as $category)
+        <option
+
+          {{ $post->category->id == $category->id ? 'selected' : ''  }}
+
+         value="{{ $category->id }}">{{ $category->title }}</option>
+      @endforeach
+    </select>
+  </div>
+
+
+  <div class="mb-3">
+    <select class="form-select" multiple aria-label="multiple select example" name='tags[]'>
+      @foreach($tags as $tag)
+        <option
+        @foreach($post->tags as $tagPost)
+          {{ $tagPost->id === $tag->id ? 'selected' : '' }}
+        @endforeach
+          value="{{ $tag->id }}">{{ $tag->title }}</option>
+      @endforeach
+    </select>
+  </div>
+
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
