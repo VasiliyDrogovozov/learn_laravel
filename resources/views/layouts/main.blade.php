@@ -12,10 +12,10 @@
           <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div class="navbar-nav">
-                  <a class="nav-link" href="{{ route('post.index') }}">Posts</a>
-                  <a class="nav-link" href="{{ route('about.index') }}">About</a>
-                  <a class="nav-link" href="{{ route('main.index') }}">Main</a>
-                  <a class="nav-link" href="{{ route('contact.index') }}">Contacts</a>
+                  <a class="nav-link" href="#">Posts</a>
+                  <a class="nav-link" href="#">About</a>
+                  <a class="nav-link" href="#">Main</a>
+                  <a class="nav-link" href="#">Contacts</a>
               </div>
             </div>
           </div>
