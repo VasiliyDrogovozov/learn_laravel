@@ -20,4 +20,7 @@
       </div>
       @endforeach
     </div>
+    <div class="mt-3">
+      {{ $posts->withQueryString()->links() }}
+    </div>
 @endsection
