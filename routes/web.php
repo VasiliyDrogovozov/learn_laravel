@@ -14,9 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
+Route::get('/admin', App\Http\Controllers\AdminController::class);
 Route::get('/', function() {
   return '<h1>Hello friend!</h1>';
+});
+
+Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'], function() {
+
+  Route::group(['namespace' => 'Post'], function() {
+    Route::get('/post', IndexController::class)->name('admin.post.index');
+  });
 });
 
 Route::group(['namespace' => 'App\Http\Controllers\Post'], function() {
