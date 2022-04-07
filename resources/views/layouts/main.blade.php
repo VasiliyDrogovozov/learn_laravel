@@ -16,6 +16,9 @@
                   <a class="nav-link" href="#">About</a>
                   <a class="nav-link" href="#">Main</a>
                   <a class="nav-link" href="#">Contacts</a>
+                  @can('view', auth()->user())
+                    <a class="nav-link" href="{{ route('admin.post.index') }}">Admin Panel</a>
+                  @endcan
               </div>
             </div>
           </div>

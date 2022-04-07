@@ -1,6 +1,7 @@
 <?php
 use App\Models\Page;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,16 +15,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/admin', App\Http\Controllers\AdminController::class);
-Route::get('/', function() {
-  return '<h1>Hello friend!</h1>';
-});
 
-Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'], function() {
+
+
+Route::get('/', [HomeController::class, 'index']);
+
+Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin', 'middleware' => 'admin'], function() {
 
   Route::group(['namespace' => 'Post'], function() {
+
     Route::get('/post', IndexController::class)->name('admin.post.index');
+
   });
+
 });
 
 Route::group(['namespace' => 'App\Http\Controllers\Post'], function() {
@@ -41,3 +45,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Post'], function() {
 
   Route::delete('/posts/{post}', DestroyController::class)->name('post.destroy');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
